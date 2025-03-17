@@ -5,7 +5,7 @@ const c = @cImport({
 const errors = @import("errors.zig");
 const getError = errors.getError;
 
-pub fn load(file: [*:0]u8, flags: u32) !PluginHandle { // Add flags later
+pub fn load(file: [*:0]const u8, flags: u32) !PluginHandle { // Add flags later
     const res = c.BASS_PluginLoad(file, flags);
     if (res == c.FALSE) {
         return getError();
